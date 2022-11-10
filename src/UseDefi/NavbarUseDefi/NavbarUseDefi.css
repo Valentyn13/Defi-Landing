@@ -1,0 +1,39 @@
+.nav-use-defi {
+    padding-top: 90px;
+    width: 100%;
+    background-color: black;
+    height: 15rem;
+}
+
+.use-link-controll {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 40%;
+    margin-left: 4rem;
+    margin-top: 2.5rem;
+    position: sticky;
+    height: 50px;
+    border: 1px solid white;
+    box-shadow: 2px -3px 10px white;
+}
+
+.use-link-wrapper {
+    width:calc(33% - 6px) ;
+}
+.use-nav-link {
+    color:aliceblue;
+    margin-right: 6px;
+    background-color:transparent;
+    cursor:pointer;
+    font-weight: 500;
+    text-transform: inherit;
+    line-height: 1.75;
+    border-radius: 8px;
+    padding: 6px 16px;
+    font-size: 0.8125rem;
+}
+.use-nav-link:hover {
+    text-shadow: 2px -1px 3px white;
+    font-size: 0.8725rem;
+}
