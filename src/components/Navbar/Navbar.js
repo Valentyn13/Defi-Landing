@@ -2,19 +2,29 @@ import { useState } from "react";
 import "./Navbar.css";
 import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai';
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {setHamburgerActive} from "../../redux/reduxSlices/navbarSlice/navbarSlice";
+import { closeHamburgerActive } from "../../redux/reduxSlices/navbarSlice/navbarSlice";
 const Navbar = () => {
-const [hamburgerActive,setHamburgerActive] = useState(false);
 
-const handleHamburger = () => {
- setHamburgerActive(!hamburgerActive)
-}
+
+const dispatch = useDispatch()
+const hamburgerState = useSelector((state) => state.navbar.hamburgerActive)   
+
+// const [hamburgerActive,setHamburgerActive] = useState(false);
+
+// const handleHamburger = () => {
+//     dispatch(setHamburgerActive())
+// //  setHamburgerActive(!hamburgerActive)
+// }
+
  const goToLink = (e) => {
     console.log(e.target.id)
     if(e.target.id === 'home') {
-    setHamburgerActive(false)
+    dispatch (closeHamburgerActive(false))
     return
     }
-    setHamburgerActive(!hamburgerActive)
+    dispatch(setHamburgerActive(!hamburgerState))
  }
 
     return (
@@ -24,7 +34,7 @@ const handleHamburger = () => {
                 <h1 >
                     <Link id="home" onClick={goToLink} to='/'>Defi</Link>
                 </h1>
-                <ul className={hamburgerActive? 'nav active' : 'nav'}>
+                <ul className={hamburgerState? 'nav active' : 'nav'}>
                     <li className="nav-item">
                         <Link onClick={goToLink} to="platform">Platform</Link>
                     </li>
@@ -41,8 +51,8 @@ const handleHamburger = () => {
                         <Link onClick={goToLink} className="btn" to="use">Use Defi</Link>
                     </li>
                 </ul>
-                <div onClick={handleHamburger} className="hamburger">
-                    {hamburgerActive ? (<AiOutlineClose className="icon" />) : (<AiOutlineMenu className="icon" />)}
+                <div onClick={()=>dispatch(setHamburgerActive(!hamburgerState))} className="hamburger">
+                    {hamburgerState ? (<AiOutlineClose className="icon" />) : (<AiOutlineMenu className="icon" />)}
                 </div>
 
             </div>

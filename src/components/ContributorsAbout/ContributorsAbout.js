@@ -1,7 +1,7 @@
 import ContributorCard from "./ContributorCard";
 import "./ContributorsAbout.css";
 import cardData from './contributors.json'
-
+import {v4} from "uuid"
 const ContributorsAbout = () => {
 
     return(
@@ -11,7 +11,7 @@ const ContributorsAbout = () => {
                 <div className="contributor-list">
                 {cardData.map(({name,src,position}) => {
                         return (
-                            <ContributorCard url={src} name={name} position={position}/>
+                            <ContributorCard key={v4()} url={src} name={name} position={position}/>
                         )
                 })}
                 </div>

@@ -6,7 +6,6 @@ const UseDefiPage = () => {
     return(
         <>
         <NavbarUseDefi/>
-        {/* <CoreUseDefi/> */}
         <Outlet/>
         </>
     )

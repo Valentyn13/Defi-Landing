@@ -19,15 +19,16 @@
 }
 
 .use-defi-container {
-    max-width: 1200;
+    max-width: 1200px;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: black;
     margin: 0 auto;
+    padding: 0 2rem;
 }
 .coin-search {
-    margin: 64px auto;
+    margin: 2rem auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -60,9 +61,40 @@
   color: #e2e2e2;
 }
 
+.price-change-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.price-change-text {
+  margin-right: 15px;
+}
+.price-change {
+  margin-right: 0.8rem;
+  cursor: pointer;
+  width: 40px;
+  text-align: center;
+  border-radius: 0.3rem;
+}
+
+.price-change-active {
+  border: 1px solid white;
+  border-radius: 0.3rem;
+  margin-right: 0.8rem;
+  cursor: pointer;
+  width: 40px;
+  text-align: center;
+}
+
+.price-change:hover {
+  background-color: #575454;
+}
+
+.price-container, .amoun-coins {
+  display: flex;
+}
+
 /* Coin styles */
-
-
 
 .coin-container {
     display: flex;
@@ -72,7 +104,7 @@
   .coin-row {
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: center;
     height: 80px;
     border-bottom: 1px solid #d7d7d7;
