@@ -1,6 +1,6 @@
 import './LoadPage.css'
 
-const LoadPage = () => {
+const LoadPage = ({newStyles}) => {
   return (
     <div className='load-layout'>
         <div className="lds-spinner">

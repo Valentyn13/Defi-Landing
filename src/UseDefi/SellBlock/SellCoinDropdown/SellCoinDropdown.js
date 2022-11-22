@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import "./SellCoinDropdown.css"
 import { setSelectedCoinToSwap } from '../../../redux/reduxSlices/swapDefiSlice/swapDefiSlice'
+import SellCoinElement from './SellCoinElement/SellCoinElement'
+import {v4} from "uuid"
 
 const SellCoinDropdown = () => {
   const dispatch = useDispatch()
@@ -21,23 +23,15 @@ const SellCoinDropdown = () => {
     {
       isActive && (
         <div className='sell-dropdown-content'>
-          {console.log(coinsToSwap)}
-            {coinsToSwap.map((dropCoin) => (
-              <div className='token' onClick={()=>{
+            {coinsToSwap.map((dropCoin) => {
+              const handleSellCoinClick = () => {
                 dispatch(setSelectedCoinToSwap(dropCoin))
-                  setIsActive(false)
-                  }
-                }>
-                <div className='sell-token-img'>
-                   <img className='sell-coin' src={dropCoin.image} alt='coin'/>
-                </div>
-                <div className='dropdown-token-symbol'>
-                  <div>
-                    {dropCoin.symbol.toUpperCase()}
-                  </div>
-                </div>
-              </div>
-            )
+                setIsActive(false)
+              }
+              return (
+                <SellCoinElement key={v4()} dropCoin={dropCoin} handleSellCoinClick={handleSellCoinClick}/>
+              )
+            }
             )}
         </div>
       )

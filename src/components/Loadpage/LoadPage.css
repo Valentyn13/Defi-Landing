@@ -2,7 +2,7 @@
 .load-layout {
     margin: 0 auto;
     max-width: 1200px;
-    height: 100vh;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;

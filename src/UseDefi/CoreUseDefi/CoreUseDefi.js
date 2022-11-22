@@ -1,6 +1,5 @@
 import "./CoreUseDefi.css";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import Coins from "../Coin.js/Coins";
 import { getCoins } from "../../redux/reduxSlices/useDefiSlice/useDefiSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -54,6 +53,7 @@ const CoreUseDefi = () => {
 
         <div className="coin-app">
             {status === 'loading' && <LoadPage/> }
+            {status === 'resolve' && (
             <div className="use-defi-container">
             <div className="coin-search">
                 <h1 className="coin-text">Search a currency</h1>
@@ -108,6 +108,8 @@ const CoreUseDefi = () => {
                 }))}
 
             </div>
+            )}
+
 
         </div>
     )

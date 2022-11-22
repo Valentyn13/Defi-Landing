@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getSelectedNetwork } from '../../redux/reduxSlices/swapDefiSlice/swapDefiSlice';
+import {v4} from 'uuid'
 function DropdownNetworks() {
 
     const dispatch = useDispatch()
@@ -15,7 +16,7 @@ function DropdownNetworks() {
             {selectedNetwork}
         </div>
         {isActive && (
-                    <div className='dropdown-content'>
+                    <div key={v4()} className='dropdown-content'>
                         {networks.map((network)=> (
                             <div onClick={()=> {
                                 dispatch(getSelectedNetwork({network}))

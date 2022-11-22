@@ -3,11 +3,16 @@ import "./BuyCoinDropdown.css"
 import { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { setCoinToBuy } from '../../../redux/reduxSlices/swapDefiSlice/swapDefiSlice'
+import BuyCoinElement from '../BuyCoinelement/BuyCoinElement'
+import {v4} from 'uuid'
 const BuyCoinDropdown = () => {
     const [isActive, setIsActive] = useState(false)
   const dispatch = useDispatch();
   const coinToBuy = useSelector(state => state.swap.coinToBuy)
   const coinsToSwap = useSelector(state => state.swap.coinsToSwap)
+
+
+
   return (
     <div className='sell-dropdown'>
     <div className='sell-dropdown-btn' onClick={()=>setIsActive(!isActive)}>
@@ -21,23 +26,16 @@ const BuyCoinDropdown = () => {
     {
       isActive && (
         <div className='sell-dropdown-content buy-content'>
-            {coinsToSwap.map((dropCoin) => (
-              <div className='token' onClick={()=>{
-                dispatch(setCoinToBuy(dropCoin))
-                  setIsActive(false)
-                  }
-                }>
-                <div className='sell-token-img'>
-                   <img className='sell-coin' src={dropCoin.image} alt='coin'/>
-                </div>
-                <div className='dropdown-token-symbol'>
-                  <div>
-                    {dropCoin.symbol.toUpperCase()}
-                  </div>
-                </div>
-              </div>
-            )
+            {coinsToSwap.map((dropCoin) =>{
+
+            const handleBuyCoinClick = () => {
+              dispatch(setCoinToBuy(dropCoin))
+              setIsActive(false)
+            }
+          return ( 
+            <BuyCoinElement key={v4()} dropCoin={dropCoin} handleBuyCoinClick={handleBuyCoinClick} />
             )}
+        )}
         </div>
       )
     }
