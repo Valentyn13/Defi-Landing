@@ -4,6 +4,7 @@ import axios from "axios";
 import Coins from "../Coin.js/Coins";
 import { getCoins } from "../../redux/reduxSlices/useDefiSlice/useDefiSlice";
 import { useDispatch, useSelector } from "react-redux";
+import LoadPage from "../../components/Loadpage/LoadPage";
 
 const CoreUseDefi = () => {
 
@@ -17,6 +18,7 @@ const CoreUseDefi = () => {
 
     const dispatch = useDispatch()
     const coins = useSelector(state => state.defi.coins)
+    const status = useSelector((state) => state.defi.status)
     
     useEffect(()=>{
         dispatch(getCoins(renderCoins))
@@ -49,9 +51,10 @@ const CoreUseDefi = () => {
 
     
     return (
-        <div className="coin-app">
-            <div className="use-defi-container">
 
+        <div className="coin-app">
+            {status === 'loading' && <LoadPage/> }
+            <div className="use-defi-container">
             <div className="coin-search">
                 <h1 className="coin-text">Search a currency</h1>
                 <div className="form-controll">

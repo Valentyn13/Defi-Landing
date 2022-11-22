@@ -1,9 +1,13 @@
 import React from 'react'
 import "./BuyCoinDropdown.css"
 import { useState } from 'react'
-const BuyCoinDropdown = ({coinsToSwap,coinToBuy,setCoinToBuy}) => {
+import { useSelector, useDispatch } from 'react-redux'
+import { setCoinToBuy } from '../../../redux/reduxSlices/swapDefiSlice/swapDefiSlice'
+const BuyCoinDropdown = () => {
     const [isActive, setIsActive] = useState(false)
-
+  const dispatch = useDispatch();
+  const coinToBuy = useSelector(state => state.swap.coinToBuy)
+  const coinsToSwap = useSelector(state => state.swap.coinsToSwap)
   return (
     <div className='sell-dropdown'>
     <div className='sell-dropdown-btn' onClick={()=>setIsActive(!isActive)}>
@@ -19,7 +23,7 @@ const BuyCoinDropdown = ({coinsToSwap,coinToBuy,setCoinToBuy}) => {
         <div className='sell-dropdown-content buy-content'>
             {coinsToSwap.map((dropCoin) => (
               <div className='token' onClick={()=>{
-                setCoinToBuy(dropCoin)
+                dispatch(setCoinToBuy(dropCoin))
                   setIsActive(false)
                   }
                 }>

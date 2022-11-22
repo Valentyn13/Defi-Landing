@@ -1,22 +1,26 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import { getSelectedNetwork } from '../../redux/reduxSlices/swapDefiSlice/swapDefiSlice';
+function DropdownNetworks() {
 
-function DropdownNetworks({selected, setSelected}) {
+    const dispatch = useDispatch()
+    const selectedNetwork = useSelector((state) => state.swap.selected)
 
     const [isActive, setIsActive] = useState(false)
-    const networks = ['Ethereum','BNB Chain',"Polygon"];
+    const networks = [{name:'Ethereum', net:'ethereum-ecosystem'},{name:'BNB Chain', net:'binance-smart-chain'},{name:'Polygon', net:'polygon-ecosystem'}]
 
   return (
     <div className='dropdown'>
         <div className='dropdown-btn' onClick={()=>setIsActive(!isActive)}>
-            {selected}
+            {selectedNetwork}
         </div>
         {isActive && (
                     <div className='dropdown-content'>
                         {networks.map((network)=> (
                             <div onClick={()=> {
-                                setSelected(network)
+                                dispatch(getSelectedNetwork({network}))
                                 setIsActive(false)
-                            }} className='dropdown-item'>{network}</div>
+                            }} className='dropdown-item'>{network.name}</div>
                         ))}
                     </div>
         )}

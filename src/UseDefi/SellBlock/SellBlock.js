@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux';
 import "./SellBlock.css"
+import SellCoinDropdown from './SellCoinDropdown/SellCoinDropdown';
 
-import SellCoinDropdown from './SellCoinDropdown/SellCoinDropdown'
 function SellBlock(props) {
-   
-    const {coinsToSwap, setSelectedCoinToSwap, selectedCoinToSwap,amount,setAmount} = props;
 
+    const {amount,setAmount} = props;
+const selectedCoinToSwap = useSelector((state) => state.swap.selectedCoinToSwap)
     useEffect(()=>setAmount(1),[selectedCoinToSwap])
 
   return (
@@ -15,7 +16,7 @@ function SellBlock(props) {
         </div>
         <div className='sell-content-block'> 
             <div className='selected-token'>
-                <SellCoinDropdown coinsToSwap={coinsToSwap} selectedCoinToSwap={selectedCoinToSwap} setSelectedCoinToSwap={setSelectedCoinToSwap}/>
+                <SellCoinDropdown />
             </div>
             <div className='sell-input-wrapper'>
             <input type="number" value={amount} className='amount-tokens' onChange={(e)=>{
