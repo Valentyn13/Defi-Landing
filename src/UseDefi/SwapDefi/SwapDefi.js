@@ -12,6 +12,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getCoinsToSwap } from '../../redux/reduxSlices/swapDefiSlice/swapDefiSlice';
 import LoadPage from '../../components/Loadpage/LoadPage';
 
+import { setSelectedCoinToSwap } from '../../redux/reduxSlices/swapDefiSlice/swapDefiSlice';
+import { setCoinToBuy } from '../../redux/reduxSlices/swapDefiSlice/swapDefiSlice';
+
 const SwapDefi = () => {
 const dispatch = useDispatch()
 const [walletConnected, setWalletConnected] = useState(false)
@@ -24,7 +27,8 @@ useEffect(() => {
 dispatch(getCoinsToSwap())
 }, [selected])
 
-
+const selectedCoinToSwap = useSelector(state => state.swap.selectedCoinToSwap)
+const coinToBuy = useSelector(state => state.swap.coinToBuy)
 
   const handleWalletConnect = () => {
     setWalletConnected(!walletConnected)
@@ -53,7 +57,10 @@ dispatch(getCoinsToSwap())
                             <SellBlock   amount={amount} setAmount={setAmount}/>
                             <div 
                              className='reverse-tokens'>
-                              <BsFillArrowDownCircleFill className='bs-icon'/>
+                              <BsFillArrowDownCircleFill onClick={() => {
+                                  dispatch(setSelectedCoinToSwap(coinToBuy))
+                                  dispatch(setCoinToBuy(selectedCoinToSwap))
+                              }} className='bs-icon'/>
                             </div>
                             <BuyBlock amount={amount}/>
                             <div className='confirm-operation-btn'>
