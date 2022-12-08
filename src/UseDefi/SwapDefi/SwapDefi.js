@@ -64,10 +64,22 @@ const coinToBuy = useSelector(state => state.swap.coinToBuy)
                             </div>
                             <BuyBlock amount={amount}/>
                             <div className='confirm-operation-btn'>
-                              <button onClick={() => setConfirmOperation(true)} className='btn'>Confirm operation</button>
+                              <button onClick={() =>{
+                                walletConnected ? setConfirmOperation(true) : alert("Connect wallet")
+                              } } className='btn'>Confirm operation</button>
                               <Modal active={confirmOperation} setActive={setConfirmOperation}>
-                                some text
-                              </Modal>
+                              <div>Transaction detail</div>
+                              <div>Network:{selected}</div>
+                              <div className='modal-sell-detail'>
+                                <div>Sell: {selectedCoinToSwap.name}</div>
+                                <div>Amount:{amount}</div>
+                                <div>Price:{amount * selectedCoinToSwap.current_price}</div>
+                              </div>
+                              <div className='modal-buy-detail'>
+                                <div>Buy: {coinToBuy.name}</div>
+                                <div>Amount:{((selectedCoinToSwap.current_price / coinToBuy.current_price)*amount).toFixed(2)}</div>
+                              </div>
+                            </Modal>
                             </div>
                         </div>
                       </div> 
