@@ -11,27 +11,52 @@ import Modal from './Modal/Modal';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCoinsToSwap } from '../../redux/reduxSlices/swapDefiSlice/swapDefiSlice';
 import LoadPage from '../../components/Loadpage/LoadPage';
-
+import axios from 'axios';
 import { setSelectedCoinToSwap } from '../../redux/reduxSlices/swapDefiSlice/swapDefiSlice';
 import { setCoinToBuy } from '../../redux/reduxSlices/swapDefiSlice/swapDefiSlice';
 
 const SwapDefi = () => {
 const dispatch = useDispatch()
-const [walletConnected, setWalletConnected] = useState(false)
 
-const selected = useSelector((state) => state.swap.selected)
+const [walletConnected, setWalletConnected] = useState(false)
+const [fromWallet, setFromWallet] = useState(null)
+const  [toWallet, setToWallet] = useState('')
 const [amount,setAmount] = useState(1)
 const [confirmOperation, setConfirmOperation] = useState(false)
-const status = useSelector(state => state.swap.status)
-useEffect(() => {
-dispatch(getCoinsToSwap())
-}, [selected])
 
 const selectedCoinToSwap = useSelector(state => state.swap.selectedCoinToSwap)
 const coinToBuy = useSelector(state => state.swap.coinToBuy)
+const selected = useSelector((state) => state.swap.selected)
+const status = useSelector(state => state.swap.status)
+const network = useSelector(state => state.swap.network)
+useEffect(() => {
+  dispatch(getCoinsToSwap())
+  }, [selected,dispatch])
 
   const handleWalletConnect = () => {
     setWalletConnected(!walletConnected)
+  }
+
+  // ------- Post data
+  const handleCompleteBtn = async () => {
+    setConfirmOperation(false)
+    setToWallet('')
+    try {
+      await axios.post('/api/swap/transaction', {
+        fromWallet,
+        toWallet,
+        network,
+        sellCoin:{name: 'Coin to sale'},
+        buyCoin: {name:'Coin to buy'}
+        // ---------------------------------------------------------------
+      }, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then((response) => console.log(response))
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -64,12 +89,13 @@ const coinToBuy = useSelector(state => state.swap.coinToBuy)
                             </div>
                             <BuyBlock amount={amount}/>
                             <div className='confirm-operation-btn'>
-                              <button onClick={() =>{
+                              <button onClick={() => {
                                 walletConnected ? setConfirmOperation(true) : alert("Connect wallet")
+                                setFromWallet('2346374658')
                               } } className='btn'>Confirm operation</button>
-                              <Modal active={confirmOperation} setActive={setConfirmOperation}>
-                              <div>Transaction detail</div>
-                              <div>Network:{selected}</div>
+                              <Modal active={confirmOperation}>
+                              <div className='modal-header'>Transaction detail</div>
+                              <div className='modal-network'>Network:{selected}</div>
                               <div className='modal-sell-detail'>
                                 <div>Sell: {selectedCoinToSwap.name}</div>
                                 <div>Amount:{amount}</div>
@@ -78,6 +104,10 @@ const coinToBuy = useSelector(state => state.swap.coinToBuy)
                               <div className='modal-buy-detail'>
                                 <div>Buy: {coinToBuy.name}</div>
                                 <div>Amount:{((selectedCoinToSwap.current_price / coinToBuy.current_price)*amount).toFixed(2)}</div>
+                              </div>
+                              <div className='modal-bottom'>
+                                <input type="number" value={toWallet} placeholder="Enter wallet adress" onChange={(e) => setToWallet(e.target.value)}/>
+                                <button onClick={handleCompleteBtn}>Complete</button>
                               </div>
                             </Modal>
                             </div>

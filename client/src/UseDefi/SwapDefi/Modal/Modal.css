@@ -20,13 +20,41 @@
 .modal-content {
     padding: 1.5rem;
     border-radius: 0.8rem;
-    height: 200px;
+    /* height: 200px; */
     width: 400px;
     background-color: aliceblue;
     transition: 0.5s all;
     transform: scale(0.5);
+    display: flex;
+    flex-direction: column;
 }
+.modal-header {
+    align-self: center;
+    font-size: 1.3rem;
+}
+.modal-sell-detail {
+    align-self: flex-start;
+    margin: .2rem;
+    padding: .2rem;
+}
+.modal-network {
+    align-self: center;
+}
+.modal-buy-detail {
+    align-self: flex-start;
+    margin: 1rem .2;
+    padding: .2rem;
+}
+.modal-bottom {
+    display: flex;
+    align-self: center;
+    flex-direction: column;
+    margin-top: 1rem;
+    padding: .4rem;
+    height: 60px;
+    justify-content: space-between;
 
+}
 .modal-content-active {
     transform: scale(1);
 }
