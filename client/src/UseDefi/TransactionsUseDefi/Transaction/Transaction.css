@@ -1,0 +1,21 @@
+.fetch-transaction {
+    margin: 1rem auto;
+    padding: .5rem;
+    max-width: 500px;
+    background-color: grey;
+    border: 1px solid white;
+}
+.trn-elment {
+    border:  1px solid black;
+}
+.fetch-transaction {
+    display: flex;
+    justify-content: space-evenly;
+    width: 500px;
+}
+.trn-network {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

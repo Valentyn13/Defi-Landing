@@ -1,0 +1,13 @@
+
+.transactions-use-defi {
+    width: 100%;
+    background-color: black;
+}
+.transactions-container {
+    max-width:900px;
+    margin: 0 auto;
+    color:white;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+}

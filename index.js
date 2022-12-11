@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(express.json({extended: true}))
 app.use('/api/swap',require('./routes/transaction.route'))
-
+app.use('/api/swap', require('./routes/getTransaction.route'))
 async function start () {
     try {
         await mongoose.connect('mongodb+srv://Valentyn:Valentyn@clusterdefi.h9rojy8.mongodb.net/Transaction?retryWrites=true&w=majority')
