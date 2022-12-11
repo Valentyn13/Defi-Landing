@@ -9,7 +9,7 @@ app.use('/api/swap',require('./routes/transaction.route'))
 
 async function start () {
     try {
-        await mongoose.connect('mongodb+srv://Valentyn:Valentyn@clusterdefi.h9rojy8.mongodb.net/?retryWrites=true&w=majority')
+        await mongoose.connect('mongodb+srv://Valentyn:Valentyn@clusterdefi.h9rojy8.mongodb.net/Transaction?retryWrites=true&w=majority')
         app.listen(PORT, () => console.log(`Server started on port : ${PORT}`))
     } catch (error) {
         console.log(error)

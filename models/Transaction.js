@@ -4,8 +4,8 @@ const TransactionSchema = new Schema({
     fromWallet: Number,
     toWallet: Number,
     network: String,
-    // sellCoin: Object,
-    // buyCoin: Object,
+    sellCoin: Object,
+    buyCoin: Object,
 })
 
 // sellCoinName: String,

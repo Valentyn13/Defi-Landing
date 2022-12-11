@@ -28,7 +28,7 @@ const selectedCoinToSwap = useSelector(state => state.swap.selectedCoinToSwap)
 const coinToBuy = useSelector(state => state.swap.coinToBuy)
 const selected = useSelector((state) => state.swap.selected)
 const status = useSelector(state => state.swap.status)
-const network = useSelector(state => state.swap.network)
+const network = useSelector(state => state.swap.selected)
 useEffect(() => {
   dispatch(getCoinsToSwap())
   }, [selected,dispatch])
@@ -46,8 +46,19 @@ useEffect(() => {
         fromWallet,
         toWallet,
         network,
-        sellCoin:{name: 'Coin to sale'},
-        buyCoin: {name:'Coin to buy'}
+        sellCoin:{
+          name: selectedCoinToSwap.name,
+          symbol:selectedCoinToSwap.symbol,
+          current_price:selectedCoinToSwap.current_price,
+          amount,
+          priceOfTransaction:amount * selectedCoinToSwap.current_price
+        },
+        buyCoin: {
+          name: coinToBuy.name,
+          symbol:coinToBuy.symbol,
+          current_price: coinToBuy.current_price,
+          amount: ((selectedCoinToSwap.current_price / coinToBuy.current_price)*amount).toFixed(2),
+        }
         // ---------------------------------------------------------------
       }, {
         headers: {

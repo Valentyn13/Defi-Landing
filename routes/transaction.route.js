@@ -5,12 +5,14 @@ const Transaction = require('../models/Transaction')
 
 router.post('/transaction', async (req, res) => {
     try {
-        const {fromWallet, toWallet, network} = req.body;
+        const {fromWallet, toWallet, network,sellCoin,buyCoin} = req.body;
 
         const transaction = new Transaction({
             fromWallet,
             toWallet,
             network,
+            sellCoin,
+            buyCoin,
         })
 
         await transaction.save()

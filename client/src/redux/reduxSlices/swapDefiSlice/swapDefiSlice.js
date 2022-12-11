@@ -55,6 +55,7 @@ export const swapDefiSlice = createSlice({
         [getCoinsToSwap.fulfilled]: (state, action) => {
             state.status = 'resolve';
             state.coinsToSwap = action.payload
+            console.log(action.payload[0])
         },
         [getCoinsToSwap.rejected]: (state, action) => {
             state.status = 'rejected';
