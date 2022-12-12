@@ -1,12 +1,17 @@
 import axios from 'axios'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Transaction from './Transaction/Transaction'
 import './TransactionsUseDefi.css'
 const TransactionsUseDefi = () => {
 
   const [fetchTransactions, setFetchTransactions] = useState([])
 
-  const getTransactions = async () => {
+
+  useEffect(() => {
+    getTransactions()
+  },[])
+
+  const getTransactions = async function() {
     try {
       await axios.get('/api/swap/getTransactions').then((response) => {
         if (response.status === 200) {
@@ -17,13 +22,12 @@ const TransactionsUseDefi = () => {
     } catch (error) {
       console.log(error)
     }
-    console.log(fetchTransactions)
   }
   return (
     <div className='transactions-use-defi'>
       <div className='container'>
           <div className='transactions-container'>
-            <button onClick={getTransactions}>get transactions</button>
+            <div className='trn-header-text'>Your Transactions</div>
             {fetchTransactions.map((data) => {
 
               return (

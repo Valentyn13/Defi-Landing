@@ -40,6 +40,7 @@
 .coin-text {
   margin-bottom: 32px;
   text-align: center;
+  user-select: none;
 }
 
 .coin-input {
@@ -194,5 +195,12 @@
     }
     .use-defi-container {
       min-height: 500px;
+    }
+    .price-change-container {
+      flex-direction: column;
+      align-items: center;
+    }
+    .price-change-container div {
+      margin-bottom: .5rem;
     }
 }

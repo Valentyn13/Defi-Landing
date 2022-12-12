@@ -7,6 +7,8 @@ const NavbarUseDefi = ()=> {
     return(
         <div className='nav-use-defi'>
             <div className='container'>
+
+                <div className='dropdown-option-wrapper'>
                 <div onClick={() => setActOptions(!actOptions)} className='options-dropdown'>
                     <div  className='option-dropdown-button'>Options</div>
                         {actOptions && (
@@ -24,6 +26,9 @@ const NavbarUseDefi = ()=> {
                     )} 
 
                 </div>
+                </div>
+
+
 
             </div>
 

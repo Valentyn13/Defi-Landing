@@ -12,13 +12,14 @@
     position: relative;
     height: 50px;
     border: 1px solid white;
-    box-shadow: 2px -3px 10px white;
+    box-shadow: 0 0 20px white;
     color:white;
     border: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    border-radius: 15px;
 }
 .option-dropdown-button{
     cursor: pointer;
@@ -48,11 +49,11 @@
 
 .glide-link-container {
     position: absolute;
-    top: 110%;
+    top: 120%;
     left: 0;
     padding: 15px;
     border-radius: 15px;
-    background: grey;
+    background: rgb(7, 7, 7);
     box-shadow: 3px 3px 10px rgb(0 0 0 / 9%);
     font-weight: 500;
     color: black;
@@ -60,4 +61,20 @@
     -webkit-user-select: none;
     user-select: none;
     z-index: 3;
+    outline:none;
+    border-color:#9ecaed;
+    box-shadow: 0 0 20px #ffffff;
+}
+
+@media screen  and (max-width:576px){
+    .dropdown-option-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+.options-dropdown {
+    width: 200px;
+    margin-left:0;
+    margin-top: 2.5rem;
+}
 }

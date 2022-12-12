@@ -137,3 +137,14 @@ background-color: black;
   .confirm-operation-btn{
     margin-top: .6rem;
   }
+
+
+  @media screen and (max-width:576px) {
+    .work-zone-header {
+      flex-direction: column;
+      align-self: center;
+    }
+    .select-network {
+      margin-bottom: 1rem;
+    }
+  }
