@@ -16,9 +16,9 @@ function DropdownNetworks() {
             {selectedNetwork}
         </div>
         {isActive && (
-                    <div key={v4()} className='dropdown-content'>
+                    <div className='dropdown-content'>
                         {networks.map((network)=> (
-                            <div onClick={()=> {
+                            <div key={v4()} onClick={()=> {
                                 dispatch(getSelectedNetwork({network}))
                                 setIsActive(false)
                             }} className='dropdown-item'>{network.name}</div>

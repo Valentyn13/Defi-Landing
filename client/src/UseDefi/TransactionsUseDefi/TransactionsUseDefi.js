@@ -28,7 +28,7 @@ const TransactionsUseDefi = () => {
       <div className='container'>
           <div className='transactions-container'>
             <div className='trn-header-text'>Your Transactions</div>
-            {fetchTransactions.map((data) => {
+            {fetchTransactions.reverse().map((data) => {
 
               return (
                 <Transaction key={data._id} transaction={data}/>
