@@ -20,7 +20,10 @@
     grid-column-gap: 100px;
     margin-bottom: 5rem;
 }
-
+.big-card-wrap:hover {
+    transform: scale(1.03);
+    transition: 0.2s;
+}
 .big-card-wrap::after {
     content: "";
     position: absolute;
@@ -70,6 +73,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.btn-wrap a:hover {
+    display: inline-block;
+    transform: scale(1.09);
+    transition: 0.2s;
 }
 
 @media screen and (max-width:940px) {

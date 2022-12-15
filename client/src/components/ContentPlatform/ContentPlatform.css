@@ -67,9 +67,45 @@
 .img-control {
     max-width: 460px;
 }
-
+.img-control:hover{
+    animation-name: rotation;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+}
+.second .img-control:hover {
+    animation-name: rotation_2;
+    animation-duration: 1.5s;
+    animation-iteration-count: 1;
+}
 .img-control img {
     width: 100%;
+}
+
+/* animations */
+@keyframes rotation {
+    0% {
+
+        transform: rotateX(0) rotateY(0);
+    }
+
+    50% {
+        transform: rotateX(-20deg) rotateY(20deg);
+    }
+    100% {
+        transform: rotateX(0) rotateY(0);
+    }
+}
+@keyframes rotation_2 {
+    0% {
+        transform: rotateX(0) rotateY(0);
+    }
+
+    50% {
+        transform: rotateX(20deg) rotateY(20deg);
+    }
+    100% {
+        transform: rotateX(0) rotateY(0);
+    }
 }
 
 @media screen and (max-width:940px) {

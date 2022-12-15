@@ -29,18 +29,25 @@
     width: 70%;
 }
 
-.left-content div {
+.about-platform {
     font-weight: 600;
     font-size: 5rem;
-    line-height: 100%;
+    line-height: 100%; 
 }
 
 .left-content{
     margin: 1rem 0rem 1rem 6rem;
 }
-
+.btn-controller {
+display:block
+}
 .btn-controller a {
     margin: 1rem;
+    display: inline-block;
+}
+.btn-controller a:hover {
+    transform: scale(1.1);
+    transition: 0.2ms;
 }
 .left-content .offer {
     font-size: 1.5rem;

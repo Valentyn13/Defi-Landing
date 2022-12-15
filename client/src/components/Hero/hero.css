@@ -35,6 +35,15 @@
     font-size: 1.6rem;
     text-align: center;
 }
+.btn-group button:hover {
+    transform:scale(1.1);
+    transition: 0.3s;
+}
+.btn-group a:hover {
+    display: inline-block;
+    transform:scale(1.1);
+    transition: 0.3s;
+}
 
 @media screen and (max-width:940px) {
     .btn-group {

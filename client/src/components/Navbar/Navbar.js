@@ -11,15 +11,7 @@ const Navbar = () => {
 const dispatch = useDispatch()
 const hamburgerState = useSelector((state) => state.navbar.hamburgerActive)   
 
-// const [hamburgerActive,setHamburgerActive] = useState(false);
-
-// const handleHamburger = () => {
-//     dispatch(setHamburgerActive())
-// //  setHamburgerActive(!hamburgerActive)
-// }
-
  const goToLink = (e) => {
-    console.log(e.target.id)
     if(e.target.id === 'home') {
     dispatch (closeHamburgerActive(false))
     return
@@ -32,23 +24,23 @@ const hamburgerState = useSelector((state) => state.navbar.hamburgerActive)
         <div className="navbar">
             <div className="container">
                 <h1 >
-                    <Link id="home" onClick={goToLink} to='/'>Defi</Link>
+                    <Link id="home" className="logo-btn-hover" onClick={goToLink} to='/'>Defi</Link>
                 </h1>
                 <ul className={hamburgerState? 'nav active' : 'nav'}>
                     <li className="nav-item">
-                        <Link onClick={goToLink} to="platform">Platform</Link>
+                        <Link className="link-hover-line" onClick={goToLink} to="platform">Platform</Link>
                     </li>
                     <li className="nav-item">
-                        <Link onClick={goToLink} to="dev">Developers</Link>
+                        <Link className="link-hover-line" onClick={goToLink} to="dev">Developers</Link>
                     </li>
                     <li className="nav-item">
-                        <Link onClick={goToLink} to="comm">Community</Link>
+                        <Link className="link-hover-line" onClick={goToLink} to="comm">Community</Link>
                     </li>
                     <li className="nav-item">
-                        <Link onClick={goToLink} to="about">About</Link>
+                        <Link className="link-hover-line" onClick={goToLink} to="about">About</Link>
                     </li>
                     <li className="nav-item">
-                        <Link onClick={goToLink} className="btn" to="use">Use Defi</Link>
+                        <Link onClick={goToLink} className="btn blue-btn-hover" to="use">Use Defi</Link>
                     </li>
                 </ul>
                 <div onClick={()=>dispatch(setHamburgerActive(!hamburgerState))} className="hamburger">

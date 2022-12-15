@@ -26,6 +26,24 @@
     text-decoration: none;
     font-size: 1.3rem;
 }
+.link-hover-line:hover {
+    display: inline-block;
+    text-decoration: underline;
+    transform: scale(1.03);
+    transition: 0.1s;
+}
+.blue-btn-hover:hover {
+    display: inline-block;
+    transform: scale(1.03);
+    transition: 0.1s;
+    box-shadow:0 0 20px#00d8ff;
+}
+.logo-btn-hover:hover {
+    display: inline-block;
+    text-shadow:0 0 30px#00d8ff;
+    transform: scale(1.05);
+    transition: 0.3ms;
+}
 .hamburger {
     display: none;
 }

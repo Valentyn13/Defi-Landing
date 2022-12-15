@@ -33,7 +33,9 @@
     "eject": "react-scripts eject",
     "server" :"nodemon ./server/main.js",
     "client" : "npm run start",
-    "dev" : "concurrently \"npm run server\" \" npm run client\""
+    "dev" : "concurrently \"npm run server\" \" npm run client\"",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [

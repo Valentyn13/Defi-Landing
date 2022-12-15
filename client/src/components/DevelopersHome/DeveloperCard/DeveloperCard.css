@@ -31,6 +31,10 @@
     border-radius: 32px;
     background: #06070a;
 }
+.card-wrap:hover {
+    transform: scale(1.04);
+    transition: 0.4s ease-in-out;
+}
 .card-title {
     font-size: 32px;
     font-weight: bold;
