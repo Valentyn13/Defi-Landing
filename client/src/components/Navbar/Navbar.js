@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./Navbar.css";
 import {AiOutlineMenu, AiOutlineClose} from 'react-icons/ai';
 import { Link } from "react-router-dom";
@@ -6,8 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import {setHamburgerActive} from "../../redux/reduxSlices/navbarSlice/navbarSlice";
 import { closeHamburgerActive } from "../../redux/reduxSlices/navbarSlice/navbarSlice";
 const Navbar = () => {
-
-
 const dispatch = useDispatch()
 const hamburgerState = useSelector((state) => state.navbar.hamburgerActive)   
 

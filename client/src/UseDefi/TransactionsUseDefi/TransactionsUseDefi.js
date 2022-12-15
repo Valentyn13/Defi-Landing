@@ -1,34 +1,26 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import Transaction from './Transaction/Transaction'
 import './TransactionsUseDefi.css'
+import { getTransactionData } from '../../redux/reduxSlices/getTransactionsSlice/getTransactionSlice'
+import LoadPage from '../../components/Loadpage/LoadPage'
+
 const TransactionsUseDefi = () => {
-
-  const [fetchTransactions, setFetchTransactions] = useState([])
-
-
+const dispatch = useDispatch()
+const getTransactions = useSelector((state) => state.getTransactions.data)
+const getTransactionsStatus = useSelector((state) => state.getTransactions.status)
   useEffect(() => {
-    getTransactions()
-  },[])
+    dispatch(getTransactionData())
+  },[dispatch])
 
-  const getTransactions = async function() {
-    try {
-      await axios.get('/api/swap/getTransactions').then((response) => {
-        if (response.status === 200) {
-          const data = response.data
-          setFetchTransactions(data)
-        }
-      })
-    } catch (error) {
-      console.log(error)
-    }
-  }
   return (
     <div className='transactions-use-defi'>
       <div className='container'>
           <div className='transactions-container'>
+            {getTransactionsStatus === 'pending' && <LoadPage/>}
             <div className='trn-header-text'>Your Transactions</div>
-            {fetchTransactions.reverse().map((data) => {
+            {
+             getTransactions.map((data) => {
 
               return (
                 <Transaction key={data._id} transaction={data}/>

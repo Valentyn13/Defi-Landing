@@ -48,6 +48,4 @@ export const useDefiSlice = createSlice({
 
 })
 
-
-export const { storeCoins } = useDefiSlice.actions;
 export default useDefiSlice.reducer
